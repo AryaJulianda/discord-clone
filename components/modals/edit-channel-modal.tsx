@@ -62,8 +62,8 @@ export const EditChannelModal = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: channel?.name,
-      type: channel?.type,
+      name: "",
+      type: channel?.type || ChannelType.TEXT,
     },
   });
 
@@ -84,7 +84,7 @@ export const EditChannelModal = () => {
           serverId: server?.id,
         },
       });
-      await axios.post(url, values);
+      await axios.patch(url, values);
 
       form.reset();
       router.refresh();
@@ -95,7 +95,7 @@ export const EditChannelModal = () => {
   };
 
   const handleClose = () => {
-    form.reset();
+    // form.reset();
     onClose();
   };
 
@@ -108,11 +108,7 @@ export const EditChannelModal = () => {
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
-          <form
-            action=""
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <div className="space-y-8 px-6">
               <FormField
                 control={form.control}
