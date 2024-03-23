@@ -8,7 +8,7 @@ import Image from "next/image";
 
 interface FileUploadProps {
   onChange: (url?: string) => void;
-  value: String;
+  value: string;
   endpoint: "messageFile" | "serverImage";
 }
 
