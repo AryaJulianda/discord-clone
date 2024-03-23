@@ -6,7 +6,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Video, VideoOff } from "lucide-react";
 
 import { ActionTooltip } from "../action-tooltip";
-import { Tooltip } from "@radix-ui/react-tooltip";
 
 export const ChatVideoButton = () => {
   const searchParams = useSearchParams();
